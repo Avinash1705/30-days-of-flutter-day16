@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_learn/pages/detail_page.dart';
 import 'package:flutter_learn/utils/routes/MyRoutes.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,13 @@ class _HomePageState extends State<HomePage> {
     var days = 30;
     const String name = "Avinash";
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.pushNamed(context, MyRoutes.cartRoute);
+        },
+        child: Icon(CupertinoIcons.cart),
+        backgroundColor: Colors.grey,
+      ),
       appBar: AppBar(
         title: const Text("Category App"),
       ),

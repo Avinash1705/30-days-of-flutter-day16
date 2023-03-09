@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/models/catelog.dart';
+import 'package:flutter_learn/utils/routes/MyRoutes.dart';
 import 'package:flutter_learn/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -11,22 +11,28 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final homeArgs = ModalRoute.of(context)!.settings.arguments as Item;
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("${homeArgs.id}"),
+        backgroundColor: Colors.white70,
+      ),
       bottomNavigationBar: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           ButtonBar(
             alignment: MainAxisAlignment.spaceBetween,
-            children: ["\$${homeArgs.price}".text.xl4.color(Colors.deepOrange).make()],
+            children: [
+              "\$${homeArgs.price}".text.xl4.color(Colors.deepOrange).make()
+            ],
           ),
           ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.blue,
-            ),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+              ),
               onPressed: () {
-                print("${homeArgs.name} Clicked");
+                // print("${homeArgs.name} Clicked");
+                Navigator.pushNamed(context, MyRoutes.cartRoute);
               },
-              child: Text("Buy").text.xl.make())
+              child: Text("Cart").text.xl.make())
         ],
       ).p8(),
       backgroundColor: Colors.white70,
@@ -49,6 +55,13 @@ class DetailPage extends StatelessWidget {
                   children: [
                     homeArgs.name.text.xl4.color(Colors.black87).bold.make(),
                     homeArgs.desc.text.xl.color(Colors.black54).bold.make(),
+                    Text("A mobile phone is a portable telephone that can make and receive calls over a radio frequency link while the user is moving within a telephone service area, as opposed to a fixed-location phone")
+                        .text
+                        .color(Colors.white)
+                        .center
+                        .xl
+                        .make()
+                        .py64(),
                   ],
                 ).py64(),
               ),
