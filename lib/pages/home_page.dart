@@ -56,6 +56,7 @@ class _HomePageState extends State<HomePage> {
           itemCount: CatelogModel.items.length,
           itemBuilder: (BuildContext context, int index) {
             final item = CatelogModel.items[index];
+            // final item = CatelogModel.getByPosition(index);
             return Card(
               clipBehavior: Clip.antiAlias,
               child: InkWell(

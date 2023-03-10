@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/pages/cart_page.dart';
 import 'package:flutter_learn/pages/detail_page.dart';
@@ -22,11 +21,11 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
-      initialRoute: "/home",
+      initialRoute: "/cart",
       routes: {
     MyRoutes.loginRoute:(context) => LoginPage(),
     MyRoutes.homeRoute:(context)  => HomePage(),
-    MyRoutes.loginRoute :(context) => LoginPage(),
+    // MyRoutes.loginRoute :(context) => LoginPage(),
     MyRoutes.detailRoute :(context) => DetailPage(),
     MyRoutes.cartRoute :(context) => CartPage(),
     },

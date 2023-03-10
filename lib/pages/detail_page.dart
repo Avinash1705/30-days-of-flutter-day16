@@ -3,6 +3,7 @@ import 'package:flutter_learn/models/catelog.dart';
 import 'package:flutter_learn/utils/routes/MyRoutes.dart';
 import 'package:flutter_learn/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:flutter_learn/constants/constant.dart';
 
 class DetailPage extends StatelessWidget {
   get item => null;
@@ -32,7 +33,7 @@ class DetailPage extends StatelessWidget {
                 // print("${homeArgs.name} Clicked");
                 Navigator.pushNamed(context, MyRoutes.cartRoute);
               },
-              child: Text("Cart").text.xl.make())
+              child: const Text("Cart").text.xl.make())
         ],
       ).p8(),
       backgroundColor: Colors.white70,
@@ -55,9 +56,9 @@ class DetailPage extends StatelessWidget {
                   children: [
                     homeArgs.name.text.xl4.color(Colors.black87).bold.make(),
                     homeArgs.desc.text.xl.color(Colors.black54).bold.make(),
-                    Text("A mobile phone is a portable telephone that can make and receive calls over a radio frequency link while the user is moving within a telephone service area, as opposed to a fixed-location phone")
+                    Text(MyConstants.dummyDescription)
                         .text
-                        .color(Colors.white)
+                        .color(Colors.orange)
                         .center
                         .xl
                         .make()
