@@ -55,7 +55,8 @@ class _HomePageState extends State<HomePage> {
           padding: EdgeInsets.all(10.0),
           itemCount: CatelogModel.items.length,
           itemBuilder: (BuildContext context, int index) {
-            final item = CatelogModel.items[index];
+            // final item = CatelogModel.items[index];
+            final item = CatelogModel.getByPosition(index);
             return Card(
               clipBehavior: Clip.antiAlias,
               child: InkWell(
@@ -67,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                           builder: (context) =>
                               DetailPage(),
                           settings: RouteSettings(
-                              arguments: CatelogModel.items[index]
+                              arguments: CatelogModel.getByPosition(index)
                           )
                       ),
                     );

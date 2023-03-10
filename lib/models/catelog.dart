@@ -29,17 +29,21 @@ class Item {
 
   //encoding class to map
   toMap() => {
-    "id" :id,
-    "name" :name,
-    "desc" :desc,
-    "price" :price,
-    "color" :color,
-    "image" :image,
-  };
+        "id": id,
+        "name": name,
+        "desc": desc,
+        "price": price,
+        "color": color,
+        "image": image,
+      };
 }
 
 class CatelogModel {
-  static  List<Item> items = [
+  static Item getById(int id) =>
+      items.firstWhere((element) => element.id == id, orElse: null);
+
+  static Item getByPosition(int pos) => items[pos];
+  static List<Item> items = [
     Item(
         id: 1,
         name: "iPhone 12 Pro",
