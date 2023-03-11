@@ -1,12 +1,11 @@
-import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_learn/pages/detail_page.dart';
 import 'package:flutter_learn/utils/routes/MyRoutes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_learn/widgets/item_widget.dart';
 import '../models/catelog.dart';
+import '../widgets/catelog_list.dart';
 import '../widgets/drawer.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,66 +48,9 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text("Category App"),
       ),
-      body: Material(
-        child: (CatelogModel.items != null && CatelogModel.items.isNotEmpty)
-            ? GridView.builder(
-          padding: EdgeInsets.all(10.0),
-          itemCount: CatelogModel.items.length,
-          itemBuilder: (BuildContext context, int index) {
-            final item = CatelogModel.items[index];
-            // final item = CatelogModel.getByPosition(index);
-            return Card(
-              clipBehavior: Clip.antiAlias,
-              child: InkWell(
-                  onTap: () {
-                    // print("${CatelogModel.items[index].desc}");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              DetailPage(),
-                          settings: RouteSettings(
-                              arguments: CatelogModel.items[index]
-                          )
-                      ),
-                    );
-                  },
-                  child: GridTile(
-                      header: Container(
-                          child: Text(
-                            item.name,
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          color: Colors.deepPurple),
-                      child: Hero(
-                          tag: Key(item.id.toString()),
-                          child: Image.network(item.image)),
-                  footer: Container(
-                      child: Text(
-                        item.price.toString(),
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      color: Colors.black)),
-            ),
-            shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10
-            )
-            ,
-            )
-            ,
-            );
-          },
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-          ),
-        )
-            : Center(
-          child: CircularProgressIndicator(),
-        ),
-      ),
-      drawer: MyDrawer(),
+      body: CatelogList(),
+      drawer: const MyDrawer(),
     );
   }
 }
+

@@ -3,6 +3,13 @@ import 'package:flutter_learn/models/catelog.dart';
 class CartModel {
   late CatelogModel _catelog;
 
+  // //singleton
+  // static final cartModel  = CartModel()._interal();
+  // _interal() {}                                                // constructor
+  // factory CartModel() => cartModel;
+
+
+
   //to store id
   final List<int> _itemIds = [];
 

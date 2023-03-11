@@ -39,6 +39,11 @@ class Item {
 }
 
 class CatelogModel {
+  //singleton
+  static final catModel  = CatelogModel()._interal();
+  _interal() {}                                                // constructor
+  factory CatelogModel() => catModel;
+
    Item getById(int id) =>
       items.firstWhere((element) => element.id == id, orElse: null);
 
