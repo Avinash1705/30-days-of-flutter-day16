@@ -3,13 +3,6 @@ import 'package:flutter_learn/models/catelog.dart';
 class CartModel {
   late CatelogModel _catelog;
 
-  // //singleton
-  // static final cartModel  = CartModel()._interal();
-  // _interal() {}                                                // constructor
-  // factory CartModel() => cartModel;
-
-
-
   //to store id
   final List<int> _itemIds = [];
 
@@ -28,7 +21,7 @@ class CartModel {
 
 //total price
   num get totalPrice =>
-      items.fold(0, (total, current) => totalPrice + current.price);
+      items.fold(0, (totalPrice, current) => totalPrice + current.price);
 
 //add items
   void add(Item item) {
