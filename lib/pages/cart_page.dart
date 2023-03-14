@@ -26,12 +26,11 @@ class CartPage extends StatelessWidget {
         children: [
           _CartList().py32().expand(),
           const Divider(
-            thickness: 5,
+            thickness: 3,
           ),
-          _CartTotal().expand()
+          _CartTotal().objectBottomCenter().expand().p8().h20(context)
         ],
       ).py8(),
-      bottomNavigationBar: Row(),
     );
   }
 }
@@ -41,14 +40,14 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    VxState.watch(context, on: [RemoveMutation]);
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           // const Text("\$${222}").text.xl.color(Colors.brown).make(),
-          "\$${_cart.totalPrice}".text.xl.color(Colors.brown).make(),
+           Text("\$${_cart.totalPrice}").text.xl.color(Colors.brown).make(),
           30.widthBox,
           // TextButton(onPressed: (){}, child: "Buy".text.xl.make())
           ElevatedButton(
@@ -58,7 +57,10 @@ class _CartTotal extends StatelessWidget {
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.deepPurple),
               ),
-              child: "Buy".text.color(MyTheme.creamColor).xl.make())
+              child: "Buy".text
+                  .color(MyTheme.creamColor)
+                  .xl
+                  .make())
         ],
       ).px8(),
     );
@@ -71,22 +73,25 @@ class _CartList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    VxState.watch(context, on: [RemoveMutation]);
     // print(_cart.items.length);
     return _cart.items.isEmpty
         ? "Nothing In Cart".text.xl4.make()
         : ListView.builder(
-            itemCount: _cart.items.length,
-            itemBuilder: (context, index) => ListTile(
-                  leading: (Image.network(_cart.items[index].image)),
-                  subtitle: _cart.items[index].price.text.make(),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.remove_circle_outline),
-                    onPressed: () {
-                      _cart.remove(_cart.items[index]);
-                    },
-                  ),
-                  // title: _cart.items[index].name.text.make(),
-                  title: _cart.items[index].name.text.make(),
-                ));
+        itemCount: _cart.items.length,
+        itemBuilder: (context, index) =>
+            ListTile(
+              leading: (Image.network(_cart.items[index].image)),
+              subtitle: _cart.items[index].price.text.make(),
+              trailing: IconButton(
+                icon: const Icon(Icons.remove_circle_outline),
+                onPressed: () {
+                  // _cart.remove(_cart.items[index]);
+                  RemoveMutation(_cart.items[index]);
+                },
+              ),
+              // title: _cart.items[index].name.text.make(),
+              title: _cart.items[index].name.text.make(),
+            ));
   }
 }

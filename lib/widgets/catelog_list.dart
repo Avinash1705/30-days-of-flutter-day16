@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learn/models/catelog.dart';
 import 'package:flutter_learn/pages/detail_page.dart';
-import 'package:flutter_learn/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'add_to_cart.dart';
 
