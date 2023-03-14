@@ -5,12 +5,16 @@ import 'package:flutter_learn/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:flutter_learn/constants/constant.dart';
 
+import '../core/store.dart';
+import '../models/cart.dart';
+
 class DetailPage extends StatelessWidget {
   get item => null;
 
   @override
   Widget build(BuildContext context) {
     final homeArgs = ModalRoute.of(context)!.settings.arguments as Item;
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return Scaffold(
       appBar: AppBar(
         title: Text("${homeArgs.id}"),
@@ -30,8 +34,10 @@ class DetailPage extends StatelessWidget {
                 primary: Colors.blue,
               ),
               onPressed: () {
+                _cart.add(homeArgs);
                 // print("${homeArgs.name} Clicked");
                 Navigator.pushNamed(context, MyRoutes.cartRoute);
+
               },
               child: const Text("Cart").text.xl.make())
         ],

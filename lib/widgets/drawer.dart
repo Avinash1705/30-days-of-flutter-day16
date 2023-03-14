@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_learn/utils/Toast.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class MyDrawer extends StatelessWidget {
       child: Container(
           color: Colors.deepPurple,
           child: ListView(
-            children: [
+            children:  [
               DrawerHeader(
                   child: UserAccountsDrawerHeader(
                 accountName: Text("Avinash Rawat"),
@@ -26,7 +27,10 @@ class MyDrawer extends StatelessWidget {
                   CupertinoIcons.home,
                   color: Colors.white,
                 ),
-                title: Text("Home",textScaleFactor: 1.2 ,style: TextStyle(color: Colors.white)),
+                title: InkWell(onTap: (){
+                  ToastFlutter.toastFn("Home Clicked");
+                },
+                    child: Text("Home",textScaleFactor: 1.2 ,style: TextStyle(color: Colors.white))),
               ),
               ListTile(
                 leading: Icon(

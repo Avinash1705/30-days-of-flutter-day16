@@ -77,7 +77,8 @@ class _CartList extends StatelessWidget {
         : ListView.builder(
             itemCount: _cart.items.length,
             itemBuilder: (context, index) => ListTile(
-                  leading: Image.network(_cart.items[index].image),
+                  leading: (Image.network(_cart.items[index].image)),
+                  subtitle: _cart.items[index].price.text.make(),
                   trailing: IconButton(
                     icon: const Icon(Icons.remove_circle_outline),
                     onPressed: () {

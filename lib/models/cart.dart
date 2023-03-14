@@ -1,4 +1,7 @@
 import 'package:flutter_learn/models/catelog.dart';
+import 'package:velocity_x/velocity_x.dart';
+
+import '../core/store.dart';
 
 class CartModel {
   late CatelogModel _catelog;
@@ -16,8 +19,7 @@ class CartModel {
   }
 
   //get item in cart
-  List<Item> get items =>
-      _itemIds.map((id) => _catelog.getById(id)).toList();
+  List<Item> get items => _itemIds.map((id) => _catelog.getById(id)).toList();
 
 //total price
   num get totalPrice =>
@@ -30,5 +32,16 @@ class CartModel {
 
   void remove(Item item) {
     _itemIds.remove(item.id);
+  }
+}
+
+class AddMutation extends VxMutation<MyStore> {
+  final Item item;
+
+  AddMutation(this.item);
+
+  @override
+  perform() {
+    store?.cart._itemIds.add(item.id);
   }
 }
